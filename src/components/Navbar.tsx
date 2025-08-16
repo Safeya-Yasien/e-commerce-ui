@@ -13,7 +13,13 @@ const Navbar = () => {
     >
       {/* left */}
       <Link href={"/"} className="flex items-center space-x-2">
-        <Image src={"/logo.png"} alt="TrendLama" width={36} height={36} className="hidden md:block" />
+        <Image
+          src={"/logo.png"}
+          alt="TrendLama"
+          width={36}
+          height={36}
+          className="hidden md:block"
+        />
         <p className="uppercase font-medium text text-base tracking-wider">
           trendlama.
         </p>
@@ -27,7 +33,9 @@ const Navbar = () => {
         </Link>
         <Bell className="w-4 h-4 text-gray-600 cursor-pointer" />
         <ShoppingCartIcon />
-        <Link href={"/login"} aria-label="Login"></Link>
+        <Link href={"/login"} aria-label="Login">
+          Sign in
+        </Link>
       </div>
     </nav>
   );
