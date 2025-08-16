@@ -5,7 +5,7 @@ const Homepage = () => {
   return (
     <div className="">
       <div className="aspect-[3/1] mb-12 relative ">
-        <Image src={"/featured.png"} alt="Featured Product" fill />
+        <Image src={"/featured.webp"} alt="Featured Product" fill />
       </div>
 
       <ProductList />
