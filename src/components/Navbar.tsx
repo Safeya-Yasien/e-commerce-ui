@@ -13,7 +13,7 @@ const Navbar = () => {
     >
       {/* left */}
       <Link href={"/"} className="flex items-center space-x-2">
-        <Image src={"/logo.png"} alt="TrendLama" width={36} height={36} />
+        <Image src={"/logo.png"} alt="TrendLama" width={36} height={36} className="hidden md:block" />
         <p className="uppercase font-medium text text-base tracking-wider">
           trendlama.
         </p>
