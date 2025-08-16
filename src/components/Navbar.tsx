@@ -6,7 +6,11 @@ import ShoppingCartIcon from "./ShoppingCartIcon";
 
 const Navbar = () => {
   return (
-    <nav className="flex items-center justify-between pb-4 border-b border-gray-200">
+    <nav
+      className="flex items-center justify-between pb-4 border-b border-gray-200"
+      role="navigation"
+      aria-label="Main Navigation"
+    >
       {/* left */}
       <Link href={"/"} className="flex items-center space-x-2">
         <Image src={"/logo.png"} alt="TrendLama" width={36} height={36} />
@@ -16,14 +20,14 @@ const Navbar = () => {
       </Link>
 
       {/* right */}
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center gap-6">
         <SearchBar />
-        <Link href={"/"}>
+        <Link href={"/"} aria-label="Home">
           <Home className="w-4 h-4 text-gray-600" />
         </Link>
-        <Bell className="w-4 h-4 text-gray-600" />
+        <Bell className="w-4 h-4 text-gray-600 cursor-pointer" />
         <ShoppingCartIcon />
-        <Link href={"/login"}>Sign in</Link>
+        <Link href={"/login"} aria-label="Login"></Link>
       </div>
     </nav>
   );
