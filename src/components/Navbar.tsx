@@ -28,12 +28,25 @@ const Navbar = () => {
       {/* right */}
       <div className="flex items-center gap-6">
         <SearchBar />
-        <Link href={"/"} aria-label="Home">
-          <Home className="w-4 h-4 text-gray-600" />
+        <Link
+          href={"/"}
+          aria-label="Home"
+          className="text-gray-600 hover:text-blue-600 transition-colors"
+        >
+          <Home className="w-4 h-4" aria-hidden="true" />
         </Link>
-        <Bell className="w-4 h-4 text-gray-600 cursor-pointer" />
+        <button
+          aria-label="Notifications"
+          className="text-gray-600 hover:text-blue-600 transition-colors cursor-pointer"
+        >
+          <Bell className="w-4 h-4" aria-hidden="true" />
+        </button>{" "}
         <ShoppingCartIcon />
-        <Link href={"/login"} aria-label="Login">
+        <Link
+          href={"/login"}
+          aria-label="Login "
+          className="hover:text-blue-600 transition-colors"
+        >
           Sign in
         </Link>
       </div>
