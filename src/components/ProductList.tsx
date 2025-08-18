@@ -1,6 +1,10 @@
+import Categories from "./Categories";
+
 const ProductList = () => {
   return (
-    <div>ProductList</div>
-  )
-}
-export default ProductList
+    <div>
+      <Categories />
+    </div>
+  );
+};
+export default ProductList;
