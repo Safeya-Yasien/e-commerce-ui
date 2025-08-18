@@ -1,3 +1,4 @@
+import { ICategory } from "@/types";
 import {
   Briefcase,
   Footprints,
@@ -8,7 +9,7 @@ import {
   Venus,
 } from "lucide-react";
 
-export const categories = [
+export const categories: ICategory[] = [
   {
     name: "All",
     icon: ShoppingBasket,
