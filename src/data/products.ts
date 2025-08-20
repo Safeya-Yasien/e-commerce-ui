@@ -4,10 +4,10 @@ export const products: IProduct[] = [
   {
     id: 1,
     name: "Adidas CoreFit T-Shirt",
-    shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+    category: "t-shirts",
+    shortDescription: "Lightweight and breathable t-shirt.",
     description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+      "Perfect for workouts or casual wear. Soft fabric with high durability.",
     price: 39.9,
     sizes: ["s", "m", "l", "xl", "xxl"],
     colors: ["gray", "purple", "green"],
@@ -20,10 +20,10 @@ export const products: IProduct[] = [
   {
     id: 2,
     name: "Puma Ultra Warm Zip",
-    shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+    category: "jackets",
+    shortDescription: "Comfortable zip jacket for cold days.",
     description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+      "Keeps you warm with modern fabric tech. Ideal for outdoor activity.",
     price: 59.9,
     sizes: ["s", "m", "l", "xl"],
     colors: ["gray", "green"],
@@ -32,10 +32,10 @@ export const products: IProduct[] = [
   {
     id: 3,
     name: "Nike Air Essentials Pullover",
-    shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+    category: "jackets",
+    shortDescription: "Pullover with sporty design.",
     description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+      "Comfortable and modern design. Works for gym and casual wear.",
     price: 69.9,
     sizes: ["s", "m", "l"],
     colors: ["green", "blue", "black"],
@@ -47,23 +47,43 @@ export const products: IProduct[] = [
   },
   {
     id: 4,
+    name: "Nike Ultraboost Pulse",
+    category: "shoes",
+    shortDescription: "Ultra cushioning for long runs.",
+    description: "Best-selling shoes with breathable mesh fabric.",
+    price: 69.9,
+    sizes: ["40", "42", "43"],
+    colors: ["gray", "pink"],
+    images: { gray: "/products/7g.png", pink: "/products/7p.png" },
+  },
+  {
+    id: 5,
+    name: "Elegant Watch",
+    category: "accessories",
+    shortDescription: "Minimalist design watch.",
+    description: "Water-resistant with stainless steel strap.",
+    price: 129.9,
+    sizes: ["one-size"],
+    colors: ["brown"],
+    images: { brown: "/products/a2br.webp" },
+  },
+  {
+    id: 6,
     name: "Nike Dri Flex T-Shirt",
-    shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+    category: "t-shirts",
+    shortDescription: "Dry-fit technology t-shirt.",
+    description: "Sweat-resistant and great for workouts.",
     price: 29.9,
     sizes: ["s", "m", "l"],
     colors: ["white", "pink"],
     images: { white: "/products/4w.png", pink: "/products/4p.png" },
   },
   {
-    id: 5,
+    id: 7,
     name: "Under Armour StormFleece",
-    shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+    category: "jackets",
+    shortDescription: "StormFleece protects against wind and rain.",
+    description: "Perfect for winter sports and outdoor running.",
     price: 49.9,
     sizes: ["s", "m", "l"],
     colors: ["red", "orange", "black"],
@@ -74,39 +94,108 @@ export const products: IProduct[] = [
     },
   },
   {
-    id: 6,
+    id: 8,
     name: "Nike Air Max 270",
-    shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+    category: "shoes",
+    shortDescription: "Classic Nike running shoes.",
+    description: "Comfortable sole with sporty design for daily wear.",
     price: 59.9,
     sizes: ["40", "42", "43", "44"],
     colors: ["gray", "white"],
     images: { gray: "/products/6g.png", white: "/products/6w.png" },
   },
+
   {
-    id: 7,
-    name: "Nike Ultraboost Pulse ",
-    shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    price: 69.9,
-    sizes: ["40", "42", "43"],
-    colors: ["gray", "pink"],
-    images: { gray: "/products/7g.png", pink: "/products/7p.png" },
+    id: 9,
+    name: "Sporty Backpack",
+    category: "bags",
+    shortDescription: "Durable backpack for daily use.",
+    description: "Water-resistant fabric with multiple compartments.",
+    price: 59.9,
+    sizes: ["one-size"],
+    colors: ["maroon"],
+    images: { maroon: "/products/b2ma.webp" },
   },
   {
-    id: 8,
+    id: 10,
     name: "Levi’s Classic Denim",
-    shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+    category: "jackets",
+    shortDescription: "Timeless denim jacket.",
+    description: "High-quality Levi’s denim with a classic cut.",
     price: 59.9,
     sizes: ["s", "m", "l"],
     colors: ["blue", "green"],
     images: { blue: "/products/8b.png", green: "/products/8gr.png" },
+  },
+
+  {
+    id: 11,
+    name: "Winter Wool Gloves",
+    category: "gloves",
+    shortDescription: "Warm wool gloves for winter.",
+    description: "Soft wool fabric with a snug fit, perfect for cold days.",
+    price: 19.9,
+    sizes: ["s", "m", "l"],
+    colors: ["black"],
+    images: { black: "/products/g1b.png" },
+  },
+
+  {
+    id: 12,
+    name: "Summer Floral Dress",
+    category: "dresses",
+    shortDescription: "Light summer dress.",
+    description: "Beautiful floral pattern with a flowy design.",
+    price: 49.9,
+    sizes: ["s", "m", "l", "xl"],
+    colors: ["yellow", "black"],
+    images: { yellow: "/products/d1y.webp", black: "/products/d1b.webp" },
+  },
+  {
+    id: 13,
+    name: "Leather Driving Gloves",
+    category: "gloves",
+    shortDescription: "Premium leather gloves.",
+    description: "Made from high-quality leather, stylish and durable.",
+    price: 29.9,
+    sizes: ["m", "l"],
+    colors: ["beige", "black"],
+    images: { beige: "/products/g2be.png", black: "/products/g2b.png" },
+  },
+
+  {
+    id: 14,
+    name: "Elegant Evening Dress",
+    category: "dresses",
+    shortDescription: "Perfect for formal events.",
+    description: "Slim fit, elegant cut with high-quality fabric.",
+    price: 89.9,
+    sizes: ["s", "m", "l"],
+    colors: ["blue", "pink"],
+    images: { blue: "/products/d2b.webp", pink: "/products/d2p.webp" },
+  },
+
+  {
+    id: 15,
+    name: "Classic Leather Handbag",
+    category: "bags",
+    shortDescription: "Everyday leather handbag.",
+    description: "Made from genuine leather with a modern design.",
+    price: 79.9,
+    sizes: ["one-size"],
+    colors: ["brown", "beige"],
+    images: { brown: "/products/b1br.webp", beige: "/products/b1be.webp" },
+  },
+
+  {
+    id: 16,
+    name: "Stylish Sunglasses",
+    category: "accessories",
+    shortDescription: "UV protection sunglasses.",
+    description: "Trendy sunglasses with polarized lenses.",
+    price: 39.9,
+    sizes: ["one-size"],
+    colors: ["brown"],
+    images: { brown: "/products/a1br.webp" },
   },
 ];

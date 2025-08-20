@@ -1,12 +1,31 @@
+"use client";
+
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
 const Filter = () => {
+  const searchParams = useSearchParams();
+  const { push } = useRouter();
+  const pathname = usePathname();
+
+  const handleFilter = (filter: string) => {
+    const params = new URLSearchParams(searchParams);
+    params.set("sort", filter);
+    push(`${pathname}?${params.toString()}`, { scroll: false });
+    return;
+  };
+
   return (
     <div className="flex items-center justify-end gap-2 text-sm text-gray-500 my-6">
-      <span>Sort by: </span>
-      <select className="capitalize ring-1 ring-gray-200 shadow-md p-1 rounded-sm">
-        <option>Newest</option>
-        <option>Oldest</option>
-        <option>price low to high</option>
-        <option>price high to low</option>
+      <label htmlFor="sort">Sort by: </label>
+      <select
+        id="sort"
+        className="capitalize ring-1 ring-gray-200 shadow-md p-1 rounded-sm"
+        onChange={(e) => handleFilter(e.target.value)}
+      >
+        <option value={"new"}>Newest</option>
+        <option value={"oldest"}>Oldest</option>
+        <option value={"asc"}>price low to high</option>
+        <option value={"desc"}>price high to low</option>
       </select>
     </div>
   );

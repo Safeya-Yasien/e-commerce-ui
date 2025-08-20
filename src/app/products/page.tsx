@@ -1,9 +1,14 @@
 import ProductList from "@/components/ProductList";
 
-const ProductsPage = () => {
+const ProductsPage = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ category: string }>;
+}) => {
+  const category = (await searchParams).category;
   return (
     <div>
-      <ProductList />
+      <ProductList category={category} params="products" />
     </div>
   );
 };

@@ -7,7 +7,11 @@ const ProductCard = ({ product }: { product: IProduct }) => {
   return (
     <div className="shadow-lg rounded-lg overflow-hidden ">
       {/* img */}
-      <Link href={"/"} className="">
+      <Link
+        href={`/products/${product.id}`}
+        className=""
+        aria-label={`View details for ${product.name}`}
+      >
         <div className="relative aspect-[2/3]">
           <Image
             src={product.images[product.colors[0]]}
@@ -26,10 +30,16 @@ const ProductCard = ({ product }: { product: IProduct }) => {
         <div className="text-xs flex items-center gap-4">
           {/* sizes */}
           <div className="flex flex-col gap-1">
-            <span className=" text-gray-500">Size</span>
-            <select className="ring ring-gray-300 rounded-md px-3 py-1">
+            <label htmlFor={`size-${product.name}`} className=" text-gray-500">
+              Size
+            </label>
+            <select
+              id={`size-${product.name}`}
+              aria-label="Select size"
+              className="ring ring-gray-300 rounded-md px-3 py-1"
+            >
               {product.sizes.map((size) => (
-                <option className="uppercase" key={size}>
+                <option className="uppercase" key={size} value={size}>
                   {size}
                 </option>
               ))}
@@ -42,6 +52,8 @@ const ProductCard = ({ product }: { product: IProduct }) => {
             <div className="flex items-center gap-2">
               {product.colors.map((color) => (
                 <button
+                  type="button"
+                  aria-label={color}
                   className="w-4 h-4 rounded-full cursor-pointer"
                   key={color}
                   style={{ backgroundColor: color }}
@@ -54,8 +66,11 @@ const ProductCard = ({ product }: { product: IProduct }) => {
         {/* price */}
         <div className="flex items-center justify-between">
           <p className="font-medium">${product.price.toFixed(2)}</p>
-          <button className="flex items-center gap-2 ring-1 ring-gray-200 shadow-lg rounded-md px-2 py-1 text-sm cursor-pointer hover:text-white hover:bg-black transition-all duration-300 ">
-            <ShoppingCart className="w-4 h-4 " />
+          <button
+            aria-label={`Add ${product.name} to cart`}
+            className="flex items-center gap-2 ring-1 ring-gray-200 shadow-lg rounded-md px-2 py-1 text-sm cursor-pointer hover:text-white hover:bg-black transition-all duration-300 "
+          >
+            <ShoppingCart className="w-4 h-4 " aria-hidden="true" />
             add to cart
           </button>
         </div>

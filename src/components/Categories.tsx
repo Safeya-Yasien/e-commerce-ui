@@ -23,7 +23,7 @@ const Categories = () => {
       {categories.map((category) => (
         <button
           className={`flex items-center justify-center gap-2 cursor-pointer px-2 py-1 rounded-md ${
-            selectedCategory === category.slug ? "bg-white" : "text-gray-500"
+            selectedCategory === category.slug ? "bg-white" : "text-[#373B43]"
           }`}
           aria-label={category.name}
           key={category.slug}
