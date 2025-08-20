@@ -1,11 +1,26 @@
+"use client";
+
 import { IProduct } from "@/types";
 import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 const ProductCard = ({ product }: { product: IProduct }) => {
+  const [selectedOptions, setSelectedOptions] = useState({
+    color: product.colors[0],
+    size: product.sizes[0],
+  });
+
+  const handleChange = (key: "color" | "size", value: string) => {
+    setSelectedOptions((prev) => ({
+      ...prev,
+      [key]: value,
+    }));
+  };
+
   return (
-    <div className="shadow-lg rounded-lg overflow-hidden ">
+    <div className="shadow-lg rounded-lg overflow-hidden flex flex-col ">
       {/* img */}
       <Link
         href={`/products/${product.id}`}
@@ -14,7 +29,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
       >
         <div className="relative aspect-[2/3]">
           <Image
-            src={product.images[product.colors[0]]}
+            src={product.images[selectedOptions.color]}
             alt={product.name}
             className="object-cover hover:scale-105 transition-transform duration-300 "
             fill
@@ -23,7 +38,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
       </Link>
 
       {/* info */}
-      <div className="flex flex-col gap-4 p-4">
+      <div className="flex flex-col gap-4 p-4 flex-1">
         <h1 className="font-medium">{product.name}</h1>
         <p className="text-sm text-gray-500">{product.shortDescription}</p>
 
@@ -37,10 +52,12 @@ const ProductCard = ({ product }: { product: IProduct }) => {
               id={`size-${product.name}`}
               aria-label="Select size"
               className="ring ring-gray-300 rounded-md px-3 py-1"
+              value={selectedOptions.size}
+              onChange={(e) => handleChange("size", e.target.value)}
             >
               {product.sizes.map((size) => (
                 <option className="uppercase" key={size} value={size}>
-                  {size}
+                  {size.toUpperCase()}
                 </option>
               ))}
             </select>
@@ -54,17 +71,26 @@ const ProductCard = ({ product }: { product: IProduct }) => {
                 <button
                   type="button"
                   aria-label={color}
-                  className="w-4 h-4 rounded-full cursor-pointer"
+                  className={`w-5 h-5 rounded-full cursor-pointer  flex items-center justify-center ${
+                    selectedOptions.color === color
+                      ? "border border-gray-400 "
+                      : ""
+                  }`}
                   key={color}
-                  style={{ backgroundColor: color }}
-                ></button>
+                  onClick={() => handleChange("color", color)}
+                >
+                  <span
+                    className="w-4 h-4 block rounded-full"
+                    style={{ backgroundColor: color }}
+                  ></span>
+                </button>
               ))}
             </div>
           </div>
         </div>
 
         {/* price */}
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mt-auto">
           <p className="font-medium">${product.price.toFixed(2)}</p>
           <button
             aria-label={`Add ${product.name} to cart`}
