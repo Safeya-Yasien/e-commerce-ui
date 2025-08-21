@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { Button } from "../ui/button";
-import ShippingFormInput from "./ShippingFormInput";
+import CartFormInput from "./CartFormInput";
 
 const ShippingForm = ({
   setShippingForm,
@@ -33,37 +33,42 @@ const ShippingForm = ({
   return (
     <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
       {/* Name */}
-      <ShippingFormInput
+      <CartFormInput
         register={register}
         error={errors.name?.message}
+        name="name"
         label="name"
         placeholder="John Doe"
       />{" "}
       {/* Email */}
-      <ShippingFormInput
+      <CartFormInput
         register={register}
         error={errors.email?.message}
+        name="email"
         label="email"
         placeholder="john@example.com"
       />{" "}
       {/* Phone */}
-      <ShippingFormInput
+      <CartFormInput
         register={register}
         error={errors.phone?.message}
+        name="phone"
         label="phone"
         placeholder="123456789"
       />{" "}
       {/* Address */}
-      <ShippingFormInput
+      <CartFormInput
         register={register}
         error={errors.address?.message}
+        name="address"
         label="address"
         placeholder="123 Main St"
       />
       {/* city */}
-      <ShippingFormInput
+      <CartFormInput
         register={register}
         error={errors.city?.message}
+        name="city"
         label="city"
         placeholder="New York"
       />
