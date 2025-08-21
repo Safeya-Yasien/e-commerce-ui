@@ -9,6 +9,7 @@ import {
   PaymentFormInputs,
   paymentFormSchema,
 } from "@/schemas/paymentFormSchema";
+import Image from "next/image";
 
 const PaymentForm = () => {
   const {
@@ -55,6 +56,29 @@ const PaymentForm = () => {
         label="cvv"
         placeholder="123"
       />
+      <div className="flex items-center gap-2 mt-4">
+        <Image
+          src="/klarna.png"
+          alt="klarna"
+          width={50}
+          height={25}
+          className="rounded-md"
+        />
+        <Image
+          src="/cards.png"
+          alt="cards"
+          width={50}
+          height={25}
+          className="rounded-md"
+        />
+        <Image
+          src="/stripe.png"
+          alt="stripe"
+          width={50}
+          height={25}
+          className="rounded-md"
+        />
+      </div>
       <Button type="submit" className="cursor-pointer">
         Continue <ArrowRight className="w-3 h-3 mt-[4px]" />
       </Button>
