@@ -7,11 +7,13 @@ import { useRouter } from "next/navigation";
 const CartSummary = ({ activeStep }: { activeStep: number }) => {
   const { push } = useRouter();
 
-  const { getSubtotal } = useCartStore();
+  const { getSubtotal, hasHydrated } = useCartStore();
 
   const subtotal = getSubtotal();
   const discount = subtotal * 0.1;
   const total = subtotal - discount + 10;
+
+  if (!hasHydrated) return null;
 
   return (
     <div className="w-full lg:w-5/12 shadow-lg border-1 border-gray-100 p-8 rounded-lg flex flex-col gap-8 h-max">
@@ -23,7 +25,7 @@ const CartSummary = ({ activeStep }: { activeStep: number }) => {
         </div>
         <div className="flex justify-between text-sm">
           <p className="text-gray-500">Discount(10%)</p>
-          <p className="font-medium">$ 10</p>
+          <p className="font-medium">${discount.toFixed(2)}</p>
         </div>
         <div className="flex justify-between text-sm">
           <p className="text-gray-500">Shipping Fee</p>
