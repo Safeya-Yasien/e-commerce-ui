@@ -5,7 +5,7 @@ import { createJSONStorage, devtools, persist } from "zustand/middleware";
 interface ICartStoreProps {
   cartItems: ICartItem[];
   addToCart: (item: ICartItem) => void;
-  removeFromCart: (id: number) => void;
+  removeFromCart: (item: ICartItem) => void;
   clearCart: () => void;
   getSubtotal: () => number;
   getCartItemsCount: () => number;
@@ -25,7 +25,12 @@ export const useCartStore = create<ICartStoreProps>()(
         },
         // edit
         addToCart: (item: ICartItem) => {
-          const existingItem = get().cartItems.find((i) => i.id === item.id);
+          const existingItem = get().cartItems.find(
+            (i) =>
+              i.id === item.id &&
+              i.selectedColor === item.selectedColor &&
+              item.selectedSize === i.selectedSize
+          );
 
           if (existingItem) {
             set(
@@ -50,10 +55,17 @@ export const useCartStore = create<ICartStoreProps>()(
           }
         },
         // edit
-        removeFromCart: (id: number) => {
+        removeFromCart: (item) => {
           set(
             (state) => ({
-              cartItems: state.cartItems.filter((item) => item.id !== id),
+              cartItems: state.cartItems.filter(
+                (i) =>
+                  !(
+                    i.id === item.id &&
+                    item.selectedColor === i.selectedColor &&
+                    item.selectedSize === i.selectedSize
+                  )
+              ),
             }),
             false,
             "cart/removeFromCart"

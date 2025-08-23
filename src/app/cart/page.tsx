@@ -31,7 +31,7 @@ const CartPage = () => {
           {activeStep === 1 ? (
             cartItems.map((item) => (
               <CartItem
-                key={item.id}
+                key={item.id + item.selectedColor + item.selectedSize}
                 item={item}
                 removeFromCart={removeFromCart}
               />

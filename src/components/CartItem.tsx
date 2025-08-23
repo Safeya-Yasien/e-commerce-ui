@@ -7,7 +7,7 @@ const CartItem = ({
   removeFromCart,
 }: {
   item: ICartItem;
-  removeFromCart: (id: number) => void;
+  removeFromCart: (item: ICartItem) => void;
 }) => {
   return (
     <div className="flex items-center justify-between">
@@ -34,7 +34,7 @@ const CartItem = ({
       </div>
 
       <button
-        onClick={() => removeFromCart(item.id)}
+        onClick={() => removeFromCart(item)}
         className="w-8 h-8 rounded-full bg-red-100 hover:bg-red-200 transition-all duration-300 text-red-400 flex items-center justify-center cursor-pointer"
       >
         <Trash2 className="w-3 h-3" />

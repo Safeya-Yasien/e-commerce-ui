@@ -6,6 +6,7 @@ import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { toast } from "sonner";
 
 const ProductCard = ({ product }: { product: IProduct }) => {
   const [selectedOptions, setSelectedOptions] = useState({
@@ -32,6 +33,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
       selectedColor: selectedOptions.color,
       imageUrl: product.images[selectedOptions.color],
     });
+    toast.success("Product added to cart", { duration: 1500 });
   };
 
   return (
