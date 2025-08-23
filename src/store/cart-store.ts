@@ -1,12 +1,15 @@
 import { ICartItem } from "@/types";
 import { create } from "zustand";
-import { devtools, persist } from "zustand/middleware";
+import { createJSONStorage, devtools, persist } from "zustand/middleware";
 
 interface ICartStoreProps {
   cartItems: ICartItem[];
   addToCart: (item: ICartItem) => void;
   removeFromCart: (id: number) => void;
   clearCart: () => void;
+  getSubtotal: () => number;
+  getCartItemsCount: () => number;
+  hasHydrated: boolean;
 }
 
 export const useCartStore = create<ICartStoreProps>()(
@@ -14,6 +17,13 @@ export const useCartStore = create<ICartStoreProps>()(
     persist(
       (set, get) => ({
         cartItems: [],
+        hasHydrated: false,
+        setHasHydrated: (state: boolean) => {
+          set({
+            hasHydrated: state,
+          });
+        },
+        // edit
         addToCart: (item: ICartItem) => {
           const existingItem = get().cartItems.find((i) => i.id === item.id);
 
@@ -39,6 +49,7 @@ export const useCartStore = create<ICartStoreProps>()(
             );
           }
         },
+        // edit
         removeFromCart: (id: number) => {
           set(
             (state) => ({
@@ -51,9 +62,28 @@ export const useCartStore = create<ICartStoreProps>()(
         clearCart: () => {
           set(() => ({ cartItems: [] }), false, "cart/clearCart");
         },
+        getSubtotal: () => {
+          return get().cartItems.reduce(
+            (acc, item) => acc + item.price * item.quantity,
+            0
+          );
+        },
+        getCartItemsCount: () => {
+          return get().cartItems.reduce(
+            (total, item) => total + item.quantity,
+            0
+          );
+        },
       }),
+
       {
         name: "cart",
+        storage: createJSONStorage(() => localStorage),
+        onRehydrateStorage: () => (state) => {
+          if (state) {
+            state.hasHydrated = true;
+          }
+        },
       }
     ),
     {

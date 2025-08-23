@@ -7,12 +7,9 @@ import { useRouter } from "next/navigation";
 const CartSummary = ({ activeStep }: { activeStep: number }) => {
   const { push } = useRouter();
 
-  const { cartItems } = useCartStore();
+  const { getSubtotal } = useCartStore();
 
-  const subtotal = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
+  const subtotal = getSubtotal();
   const discount = subtotal * 0.1;
   const total = subtotal - discount + 10;
 
