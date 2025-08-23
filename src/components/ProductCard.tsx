@@ -1,5 +1,6 @@
 "use client";
 
+import { useCartStore } from "@/store/cart-store";
 import { IProduct } from "@/types";
 import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
@@ -17,6 +18,20 @@ const ProductCard = ({ product }: { product: IProduct }) => {
       ...prev,
       [key]: value,
     }));
+  };
+
+  const { addToCart } = useCartStore();
+
+  const handleAddToCart = () => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      quantity: 1,
+      price: product.price,
+      selectedSize: selectedOptions.size,
+      selectedColor: selectedOptions.color,
+      imageUrl: product.images[selectedOptions.color],
+    });
   };
 
   return (
@@ -93,6 +108,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
         <div className="flex items-center justify-between mt-auto">
           <p className="font-medium">${product.price.toFixed(2)}</p>
           <button
+            onClick={handleAddToCart}
             aria-label={`Add ${product.name} to cart`}
             className="flex items-center gap-2 ring-1 ring-gray-200 shadow-lg rounded-md px-2 py-1 text-sm cursor-pointer hover:text-white hover:bg-black transition-all duration-300 "
           >

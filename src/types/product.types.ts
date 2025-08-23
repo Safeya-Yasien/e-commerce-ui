@@ -11,3 +11,4 @@ export interface IProduct {
     [key: string]: string;
   };
 }
+
