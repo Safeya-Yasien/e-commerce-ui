@@ -33,25 +33,17 @@ export const useCartStore = create<ICartStoreProps>()(
           );
 
           if (existingItem) {
-            set(
-              (state) => ({
-                cartItems: state.cartItems.map((i) =>
-                  i.id === item.id
-                    ? { ...i, quantity: i.quantity + item.quantity }
-                    : i
-                ),
-              }),
-              false,
-              "cart/addToCar"
-            );
+            set({
+              cartItems: get().cartItems.map((i) =>
+                i.id === item.id &&
+                i.selectedColor === item.selectedColor &&
+                item.selectedSize === i.selectedSize
+                  ? { ...i, quantity: i.quantity + item.quantity }
+                  : i
+              ),
+            });
           } else {
-            set(
-              (state) => ({
-                cartItems: [...state.cartItems, item],
-              }),
-              false,
-              "cart/addNewItem"
-            );
+            set({ cartItems: [...get().cartItems, item] });
           }
         },
         // edit

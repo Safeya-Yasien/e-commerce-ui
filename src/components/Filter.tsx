@@ -7,6 +7,8 @@ const Filter = () => {
   const { push } = useRouter();
   const pathname = usePathname();
 
+  const currentSort = searchParams.get("sort") || "new";
+
   const handleFilter = (filter: string) => {
     const params = new URLSearchParams(searchParams);
     params.set("sort", filter);
@@ -19,6 +21,7 @@ const Filter = () => {
       <label htmlFor="sort">Sort by: </label>
       <select
         id="sort"
+        value={currentSort}
         className="capitalize ring-1 ring-gray-200 shadow-md p-1 rounded-sm"
         onChange={(e) => handleFilter(e.target.value)}
       >

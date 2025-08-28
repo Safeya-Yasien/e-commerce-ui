@@ -2,6 +2,31 @@ import ProductInteraction from "@/components/ProductInteraction";
 import { products } from "@/data/products";
 import Image from "next/image";
 
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { id: string };
+}) => {
+  const productId = parseInt(params.id);
+  const product = products.find((p) => p.id === productId);
+
+  if (!product) {
+    return (
+      <div className="text-center mt-12">
+        <h1 className="text-xl font-semibold">Product not found</h1>
+        <p className="text-gray-500">
+          This item doesn&apos;t exist in our store.
+        </p>
+      </div>
+    );
+  }
+
+  return {
+    title: product.name,
+    description: product.description,
+  };
+};
+
 const ProductPage = ({ params }: { params: { id: string } }) => {
   const productId = parseInt(params.id);
 
@@ -35,21 +60,21 @@ const ProductPage = ({ params }: { params: { id: string } }) => {
         <div className="flex items-center gap-2 mt-4">
           <Image
             src="/klarna.png"
-            alt="klarna"
+            alt="Pay later with Klarna"
             width={50}
             height={25}
             className="rounded-md"
           />
           <Image
             src="/cards.png"
-            alt="cards"
+            alt="Supported credit cards"
             width={50}
             height={25}
             className="rounded-md"
           />
           <Image
             src="/stripe.png"
-            alt="stripe"
+            alt="Secure payments powered by Stripe"
             width={50}
             height={25}
             className="rounded-md"

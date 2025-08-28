@@ -3,7 +3,7 @@ import Categories from "./Categories";
 import ProductCard from "./ProductCard";
 import Filter from "./Filter";
 
-const ProductList = ({
+const ProductList = async ({
   category,
   params,
 }: {
@@ -15,6 +15,7 @@ const ProductList = ({
       ? products.filter((product) => product.category === category)
       : products;
 
+  await new Promise((resolve) => setTimeout(resolve, 2000));
   return (
     <div className="w-full">
       <Categories />
@@ -23,9 +24,9 @@ const ProductList = ({
 
       {/* product card */}
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12">
-        {filteredProducts.map((product) => {
-          return <ProductCard key={product.id} product={product} />;
-        })}
+        {filteredProducts.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
       </div>
     </div>
   );
