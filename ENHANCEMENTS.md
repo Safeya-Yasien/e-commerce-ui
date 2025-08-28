@@ -7,3 +7,5 @@
 
 - add SEO meta tags
 - add single product page
+- add loading state
+
