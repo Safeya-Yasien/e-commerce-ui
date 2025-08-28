@@ -1,8 +1,23 @@
 import ProductCardSkeleton from "@/components/ProductCardSkeleton";
 import ProductList from "@/components/ProductList";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: { category?: string };
+}): Promise<Metadata> {
+  const category = searchParams.category || "all";
+
+  return {
+    title:
+      category === "all" ? "All Products | My Store" : `${category} | My Store`,
+    description: `Browse our ${category} products.`,
+  };
+}
 
 const Homepage = async ({
   searchParams,
