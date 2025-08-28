@@ -21,9 +21,9 @@ export async function generateMetadata({
 const Homepage = async ({
   searchParams,
 }: {
-  searchParams: Promise<{ category: string }>;
+  searchParams: { category?: string };
 }) => {
-  const category = (await searchParams).category;
+  const category = searchParams.category || "all";
 
   return (
     <div className="">
