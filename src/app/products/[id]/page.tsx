@@ -5,6 +5,12 @@ import { use } from "react";
 
 type Props = Promise<{ id: string }>;
 
+export async function generateStaticParams() {
+  return products.map((p) => ({
+    id: p.id.toString(),
+  }));
+}
+
 export const generateMetadata = async ({ params }: { params: Props }) => {
   const { id } = await params;
   const product = products.find((p) => p.id === parseInt(id));
