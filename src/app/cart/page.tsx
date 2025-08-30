@@ -7,7 +7,7 @@ const CartPage = ({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) => {
   const step = use(searchParams).step;
-  const activeStep = parseInt(step as string);
+  const activeStep = parseInt(step as string) || 1;
   return (
     <div className="flex flex-col gap-8 items-center justify-center mt-12">
       <h1 className="text-2xl font-medium">Your shopping cart</h1>
