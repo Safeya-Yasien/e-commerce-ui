@@ -4,7 +4,7 @@ import { ShippingFormInputs } from "@/schemas/shippingFormSchema";
 import { useCartStore } from "@/store/cart-store";
 import { useState } from "react";
 import { ShippingForm, PaymentForm } from "@/components/forms";
-import { CartItem } from ".";
+import CartItem from "./CartItem";
 
 const CartSteps = ({ activeStep }: { activeStep: number }) => {
   const { cartItems, removeFromCart, clearCart } = useCartStore();
