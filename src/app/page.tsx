@@ -1,8 +1,8 @@
-import ProductCardSkeleton from "@/components/ProductCardSkeleton";
+// import ProductCardSkeleton from "@/components/ProductCardSkeleton";
 import ProductList from "@/components/ProductList";
 import Image from "next/image";
 import Link from "next/link";
-import { Suspense } from "react";
+// import { Suspense } from "react";
 
 const Homepage = async ({
   searchParams,
@@ -17,7 +17,7 @@ const Homepage = async ({
         <Image src={"/featured.webp"} alt="Featured Product" fill />
       </div>
 
-      <Suspense
+      {/* <Suspense
         fallback={
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12">
             {Array.from({ length: 8 }).map((_, i) => (
@@ -25,9 +25,9 @@ const Homepage = async ({
             ))}
           </div>
         }
-      >
-        <ProductList category={category} params="homepage" />
-      </Suspense>
+      > */}
+      <ProductList category={category} params="homepage" />
+      {/* </Suspense> */}
 
       <Link
         href={category ? `/products/?category=${category}` : "/products"}
