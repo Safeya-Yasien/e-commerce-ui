@@ -1,24 +1,19 @@
 import ProductInteraction from "@/components/ProductInteraction";
 import { products } from "@/data/products";
 import Image from "next/image";
+import { use } from "react";
 
-export const generateMetadata = async ({
-  params,
-}: {
-  params: { id: string };
-}) => {
-  const productId = parseInt(params.id);
-  const product = products.find((p) => p.id === productId);
+type Props = Promise<{ id: string }>;
+
+export const generateMetadata = async ({ params }: { params: Props }) => {
+  const { id } = await params;
+  const product = products.find((p) => p.id === parseInt(id));
 
   if (!product) {
-    return (
-      <div className="text-center mt-12">
-        <h1 className="text-xl font-semibold">Product not found</h1>
-        <p className="text-gray-500">
-          This item doesn&apos;t exist in our store.
-        </p>
-      </div>
-    );
+    return {
+      title: "Product not found",
+      description: "This item does not exist in our store.",
+    };
   }
 
   return {
@@ -27,10 +22,9 @@ export const generateMetadata = async ({
   };
 };
 
-const ProductPage = ({ params }: { params: { id: string } }) => {
-  const productId = parseInt(params.id);
-
-  const product = products.find((p) => p.id === productId);
+const ProductPage = ({ params }: { params: Props }) => {
+  const { id } = use(params);
+  const product = products.find((p) => p.id === parseInt(id));
 
   if (!product) {
     return <div>Product not found</div>;
