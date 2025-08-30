@@ -20,7 +20,7 @@ const PaymentForm = () => {
     resolver: zodResolver(paymentFormSchema),
   });
 
-  const onSubmit: SubmitHandler<PaymentFormInputs> = (data) => {};
+  const onSubmit: SubmitHandler<PaymentFormInputs> = () => {};
 
   return (
     <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
