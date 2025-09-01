@@ -45,6 +45,7 @@ const Navbar = () => {
         <Link
           href={"/login"}
           aria-label="Login "
+
           className="hover:text-blue-600 transition-colors"
         >
           Sign in
